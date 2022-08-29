@@ -1,27 +1,43 @@
 -- criar banco projeto_cadmo_sa
 CREATE DATABASE `projeto_cadmo_sa`;
 
+
+
+
+
 -- selecionar o banco de dados
 USE `projeto_cadmo_sa`;
 
+
+
+
+
 -- criar tabelas
 CREATE TABLE `paciente` (
-	cod_paciente INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100) NOT NULL,
-	telefone VARCHAR(15)
+    cod_paciente INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15)
 );
 
+
+
+
+
 CREATE TABLE `dentista` (
-	crm INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100) NOT NULL,
-	espec VARCHAR(100) NOT NULL,
-	valor FLOAT(9) NOT NULL
+    crm INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    espec VARCHAR(100) NOT NULL
 );
+
+
+
+
 
 CREATE TABLE `consulta` (
     cod INT PRIMARY KEY AUTO_INCREMENT,
     crm INT,
     cod_paciente INT,
+    dia DATE,
     hora DATETIME NOT NULL,
     valor FLOAT(9) NOT NULL,
     
@@ -29,4 +45,4 @@ CREATE TABLE `consulta` (
         REFERENCES dentista (crm),
     FOREIGN KEY (cod_paciente)
         REFERENCES paciente (cod_paciente)
-);	
+);    

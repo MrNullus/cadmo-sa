@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "Cadmo S.A",
-    "currentPage": "reservas.html",
+    "currentPage": "index.html",
     "theme": {
       "name": "mobirise5",
       "title": "Mobirise 5",
@@ -84,7 +84,7 @@
     "index.html": {
       "settings": {
         "main": true,
-        "title": "Cadmo S.A || Home",
+        "title": "Home",
         "meta_descr": "",
         "header_custom": "",
         "footer_custom": "",
@@ -1105,7 +1105,7 @@
     },
     "reservas.html": {
       "settings": {
-        "title": "Cadmo S.A || Reserva",
+        "title": "Reservas",
         "order": "3"
       },
       "components": [
@@ -1631,7 +1631,7 @@
     },
     "login.html": {
       "settings": {
-        "title": "Cadmo S.A || Login",
+        "title": "Login",
         "order": "1"
       },
       "components": [
@@ -2168,7 +2168,7 @@
     },
     "cadastro.html": {
       "settings": {
-        "title": "Cadmo S.A || Cadastro",
+        "title": "Cadastro",
         "order": "2"
       },
       "components": [

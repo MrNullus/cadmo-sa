@@ -30,8 +30,8 @@ class Consulta {
       
     $stmt = $this->pdo->prepare("
     SELECT 
-      d.nome,
-      p.nome,
+      d.nome as nomeMedico,
+      p.nome as nomePaciente,
       dia,
       hora,
       valor
@@ -54,6 +54,37 @@ class Consulta {
     } 
     
     return $consultas;  
+  }
+  
+  public function buscarConsulta($busca) 
+  {
+    $consultaEncontrada = array();
+    
+    $stmt = $this->pdo->prepare("
+    SELECT 
+      d.nome as nomeMedico,
+      p.nome as nomePaciente,
+      dia,
+      hora,
+      valor
+      
+    FROM 
+      dentista as d,
+      paciente as p,
+      consulta as c
+      
+    WHERE 
+      d.crm  = c.crm AND
+      p.cod_paciente = c.cod_paciente AND
+      :colunaBusca = :valorBusca
+    ");
+    
+    $stmt->bindValue(":colunaBusca", $busca[0]);
+    $stmt->bindValue(":valorBusca", $busca[0]);
+    
+    $stmt->execute();
+      
+    return $consultaEncontrada;
   }
 
 }

@@ -144,35 +144,11 @@
         </div>
       </nav>
     </section>
-
+    
     <section class="features5 cid-tgMN4mf0HV" id="features6-p" data-bs-version="5.1" style="min-height: 90vh; margin-top: 5rem;">
         <div class="container">
-            <div class="row justify-content-center">
-            
+            <div class="row justify-content-center" style="gap: 2rem;">
               <?php require_once 'actions/box-reservas.php'; ?>
-              
-                <div class="card col-12 col-lg-6" >
-                    <div class="card-wrapper mbr-flex">
-                        <div class="card-box align-left">
-                            <p class="mbr-text mbr-fonts-style mb-4 display-4">
-                            <strong>Médico:</strong> 
-                            </p>
-                            <p class="mbr-text mbr-fonts-style mb-4 display-4">
-                              <strong>Paciente:</strong>   
-                            </p>
-                            <p class="mbr-text mbr-fonts-style mb-4 display-4">
-                              <strong>Data da consulta:</strong>  
-                            </p>
-                            <p class="mbr-text mbr-fonts-style mb-4
-                            display-4">
-                              <strong>Hora da consulta:</strong> 
-                            </p>
-                            <p class="mbr-text mbr-fonts-style mb-4 display-4">
-                              <strong>Valor da consulta:</strong>
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -230,7 +206,7 @@
     
 
     <!-- scroll top button -->
-    <a href="#menu1-h" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">

@@ -164,14 +164,14 @@ if ($dentista->crmExistente($_POST['crm']))
               </li>
               <li class="nav-item">
                 <a class="nav-link link text-black text-primary display-4"
-                      href="reservas.html">Reservas</a>
+                      href="../reservas.php">Reservas</a>
               </li>
             </ul>
-
+  
             <div class="navbar-buttons mbr-section-btn">
-              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.html">Cadastrar dentista</a>
+              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.html">Cadastrar dentista</a>
           
-              <a class="btn btn-primary display-4" href="consultas.html">Consultas</a>
+              <a class="btn btn-primary display-4" href="../consultas.html">Consultas</a>
             </div>
           </div>
         </div>
@@ -245,7 +245,7 @@ if ($dentista->crmExistente($_POST['crm']))
     
 
     <!-- scroll top button -->
-    <a href="#menu1-h" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">

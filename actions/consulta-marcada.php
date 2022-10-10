@@ -1,5 +1,8 @@
-<?php
-require_once('../config.php');
+<?php 
+
+require '../config.php';
+
+$aviso = "";
 
 $dentista = new Dentista();
 $dentista->conecta($pdo);
@@ -9,47 +12,47 @@ $paciente->conecta($pdo);
 
 $consulta = new Consulta();
 $consulta->conecta($pdo);
-$aviso = "";
+
 
 if (
   empty($_POST['nome-dentista']) && !isset($_POST['nome-dentista']) &&
   empty($_POST['nome-cliente']) && !isset($_POST['nome-cliente'])
-) {
+) 
+{
+  $aviso = "Erro ao reservar, cofira os dados e tente novamente...";
   return;
 }
 
-$nome_dentista = $_POST['nome-dentista'];
-$nome_cliente = $_POST['nome-cliente'];
 
-if (
-  $paciente->getCodPaciente($nome_cliente) && 
-  $dentista->getCrm($nome_dentista)
-) {
+if ($dentista->getCrm($_POST['nome-dentista']) != -1) 
+{
 
-  $cod_paciente = $paciente->getCodPaciente($nome_cliente);
-  $crm = $dentista->getCrm($nome_dentista);
+  $crm = $dentista->getCrm($_POST['nome-dentista']);
+  $nome_dentista = $_POST['nome-dentista'];
+  
+  $cod_paciente = $paciente->getCodPaciente($_POST['nome-cliente']);
+  $nome_cliente = $_POST['nome-cliente'];
+  
   $data_consulta = $_POST['data-consulta'];
   $hora_consulta = $_POST['hora-consulta'];
   $valor = $_POST['valor-consulta'];
 
+
   $consulta->cadastrar_consulta(
     array(
-      $crm, $cod_paciente, $data_consulta, $hora_consulta, $valor
+      $crm, $cod_paciente, $data_consulta, 
+      $hora_consulta, $valor
     )
   );
-  print_r($crm);
-  print_r($cod_cliente);
 
-  $aviso = "Consulta cadastrada!";
+  $aviso = "Consulta cadastrada com sucesso!";
   
-} else {
+} else  
+{
 
   $aviso = "Erro ao reservar, cofira os dados e tente novamente...";
-  return;
-
+  
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -176,31 +179,24 @@ if (
               <span></span>
             </div>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-              <li class="nav-item">
-                <a class="nav-link link text-black text-primary display-4"
-                  href="<?php echo url_base(); ?>">Home</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link link text-black text-primary display-4"
-                  href="<?php echo url_base(); ?>reservas.html"
-                  >Reserva</a>
-              </li>
-            </ul>
+			<div class="collapse navbar-collapse" id=<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                        <li class="nav-item">
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="./">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="reservas.html">Reservas</a>
+                        </li>
+                    </ul>
 
-            <div class="navbar-buttons mbr-section-btn">
-              <a
-                class="btn btn-primary-outline display-4"
-                href="<?php url_base(); ?>cadastro.html#form7-z"
-                >Cadastrar</a
-              >
-              <a class="btn btn-primary display-4" href="login.html#menu1-s"
-                >Login</a
-              >
-            </div>
-          </div>
+                    <div class="navbar-buttons mbr-section-btn">
+						<a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.html">Cadastrar dentista</a>
+					
+                        <a class="btn btn-primary display-4" href="marcar-consulta.html.html">Marcar Consulta</a>
+                    </div>
+                </div>
         </div>
       </nav>
     </section>

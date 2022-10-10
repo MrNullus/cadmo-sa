@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $pdo = new PDO("mysql:host=localhost;dbname=projeto_cadmo_sa","root","");
 
 require_once('classes/dentista.php');

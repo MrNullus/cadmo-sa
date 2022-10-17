@@ -38,7 +38,7 @@ CREATE TABLE `consulta` (
     crm INT,
     cod_paciente INT,
     dia DATE,
-    hora DATETIME NOT NULL,
+    hora TIME NOT NULL,
     valor FLOAT(9) NOT NULL,
     
     FOREIGN KEY (crm)

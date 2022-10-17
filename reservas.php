@@ -1,57 +1,3 @@
-<?php
-require_once('../config.php');
-
-$dentista = new Dentista();
-$dentista->conecta($pdo);
-
-$paciente = new Paciente();
-$paciente->conecta($pdo);
-
-$consulta = new Consulta();
-$consulta->conecta($pdo);
-$aviso = "";
-
-if (
-  empty($_POST['nome-dentista']) && !isset($_POST['nome-dentista']) &&
-  empty($_POST['nome-cliente']) && !isset($_POST['nome-cliente'])
-) {
-  return;
-}
-
-$nome_dentista = $_POST['nome-dentista'];
-$nome_cliente = $_POST['nome-cliente'];
-
-if (
-  $paciente->getCodPaciente($nome_cliente) && 
-  $dentista->getCrm($nome_dentista)
-) {
-
-  $cod_paciente = $paciente->getCodPaciente($nome_cliente);
-  $crm = $dentista->getCrm($nome_dentista);
-  $data_consulta = $_POST['data-consulta'];
-  $hora_consulta = $_POST['hora-consulta'];
-  $valor = $_POST['valor-consulta'];
-
-  $consulta->cadastrar_consulta(
-    array(
-      $crm, $cod_paciente, $data_consulta, $hora_consulta, $valor
-    )
-  );
-  print_r($crm);
-  print_r($cod_cliente);
-
-  $aviso = "Consulta cadastrada!";
-  
-} else {
-
-  $aviso = "Erro ao reservar, cofira os dados e tente novamente...";
-  return;
-
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -61,7 +7,8 @@ if (
     <meta name="generator" content="Mobirise v5.6.13, mobirise.com" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image:src" content="" />
-    <meta property="og:image" content="" />
+    <meta property="og:imag
+	e" content="" />
     <meta name="twitter:title" content="Reservas" />
     <meta
       name="viewport"
@@ -69,7 +16,7 @@ if (
     />
     <link
       rel="shortcut icon"
-      href="<?php echo url_base(); ?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+      href="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
       type="image/x-icon"
     />
     <meta name="description" content="" />
@@ -78,16 +25,16 @@ if (
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css" />
     <link
       rel="stylesheet"
       href="assets/bootstrap/css/bootstrap-reboot.min.css"
     />
-    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/animatecss/animate.css" />
-    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/dropdown/css/style.css" />
-    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/socicon/css/styles.css" />
-    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/theme/css/style.css" />
+    <link rel="stylesheet" href="assets/animatecss/animate.css" />
+    <link rel="stylesheet" href="assets/dropdown/css/style.css" />
+    <link rel="stylesheet" href="assets/socicon/css/styles.css" />
+    <link rel="stylesheet" href="assets/theme/css/style.css" />
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
@@ -115,20 +62,20 @@ if (
     <link
       rel="preload"
       as="style"
-      href="<?php echo url_base(); ?>assets/mobirise/css/mbr-additional.css"
+      href="assets/mobirise/css/mbr-additional.css"
     />
     <link
       rel="stylesheet"
-      href="<?php echo url_base(); ?>assets/mobirise/css/mbr-additional.css"
+      href="assets/mobirise/css/mbr-additional.css"
       type="text/css"
     />
 
-    <script src="<?php echo url_base(); ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo url_base(); ?>assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="<?php echo url_base(); ?>assets/ytplayer/index.js"></script>
-    <script src="<?php echo url_base(); ?>assets/dropdown/js/navbar-dropdown.js"></script>
-    <script src="<?php echo url_base(); ?>assets/theme/js/script.js"></script>
-    <script src="<?php echo url_base(); ?>assets/formoid/formoid.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="assets/ytplayer/index.js"></script>
+    <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+    <script src="assets/formoid/formoid.min.js"></script>
   </head>
 
   <body>
@@ -144,7 +91,7 @@ if (
             <span class="navbar-logo">
               <a href="index.html#top">
                 <img
-                  src="<?php echo url_base(); ?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
                   style="height: 3.8rem"
                 />
@@ -178,45 +125,32 @@ if (
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-              <li class="nav-item">
-                <a class="nav-link link text-black text-primary display-4"
-                  href="<?php echo url_base(); ?>">Home</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link link text-black text-primary display-4"
-                  href="<?php echo url_base(); ?>reservas.html"
-                  >Reserva</a>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-black text-primary display-4"
+                        href="./">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-black text-primary display-4"
+                        href="reservas.html">Reservas</a>
+                </li>
             </ul>
 
             <div class="navbar-buttons mbr-section-btn">
-              <a
-                class="btn btn-primary-outline display-4"
-                href="<?php url_base(); ?>cadastro.html#form7-z"
-                >Cadastrar</a
-              >
-              <a class="btn btn-primary display-4" href="login.html#menu1-s"
-                >Login</a
-              >
+                <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.html">Cadastrar dentista</a>
+            
+                <a class="btn btn-primary display-4" href="marcar-consulta.html">Marcar Consulta</a>
             </div>
           </div>
         </div>
       </nav>
     </section>
-
-    <section data-bs-version="5.1" class="form6 cid-tgN756Npvs" id="form6-13" style="height:100vh">
-      <div class="container">
-        <div class="mbr-section-head">
-          <h3
-            class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"
-          >
-            <strong><?php echo $aviso; ?></strong>
-          </h3>
+    
+    <section class="features5 cid-tgMN4mf0HV" id="features6-p" data-bs-version="5.1" style="min-height: 90vh; margin-top: 5rem;">
+        <div class="container">
+            <div class="row justify-content-center" style="gap: 2rem;">
+              <?php require_once 'actions/box-reservas.php'; ?>
+            </div>
         </div>
-        
-        </div>
-      </div>
     </section>
 
     <section
@@ -272,12 +206,12 @@ if (
     
 
     <!-- scroll top button -->
-    <a href="#menu1-h" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">
 
 
-    <script src="<?php echo url_base(); ?>assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>

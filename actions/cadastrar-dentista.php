@@ -1,3 +1,37 @@
+<?php
+require_once('../config.php');
+
+$aviso = "";
+
+$dentista = new Dentista();
+$dentista->conecta($pdo);
+
+
+if (
+  empty($_POST['crm']) && !isset($_POST['crm']) &&
+  empty($_POST['nome']) && !isset($_POST['nome']) &&
+  empty($_POST['espec']) && !isset($_POST['espec'])
+) 
+{
+  $aviso = "Erro! Volte a pagina de cadastro e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.html'>Cadastro</a>";
+  return;
+}
+
+if ($dentista->crmExistente($_POST['crm'])) 
+{
+	$aviso = "Dentista já cadastrado! <br><br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.html'>Cadastrar outro</a>"; 
+} else 
+{
+	$crm = intval($_POST['crm']);
+	$nome = $_POST['nome'];
+	$espec = $_POST['espec'];
+	
+	$dentista->cadastrar(array($crm, $nome, $espec));
+	
+	$aviso = "Dentista cadastrado com sucesso! <br><br> <a style='text-decoration: underline; font-size: 2rem;' href='../index.html'>Home</a>";
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,32 +42,32 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image:src" content="" />
     <meta property="og:image" content="" />
-    <meta name="twitter:title" content="Cadastro" />
+    <meta name="twitter:title" content="Reservas" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1"
     />
     <link
       rel="shortcut icon"
-      href="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+      href="<?php echo url_base(); ?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
       type="image/x-icon"
     />
     <meta name="description" content="" />
 
-    <title>Cadmo S.A || Cadastro</title>
+    <title>Cadmo S.A || Reservas</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-grid.min.css" />
     <link
       rel="stylesheet"
       href="assets/bootstrap/css/bootstrap-reboot.min.css"
     />
-    <link rel="stylesheet" href="assets/animatecss/animate.css" />
-    <link rel="stylesheet" href="assets/dropdown/css/style.css" />
-    <link rel="stylesheet" href="assets/socicon/css/styles.css" />
-    <link rel="stylesheet" href="assets/theme/css/style.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/animatecss/animate.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/dropdown/css/style.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/socicon/css/styles.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/theme/css/style.css" />
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
@@ -61,20 +95,20 @@
     <link
       rel="preload"
       as="style"
-      href="assets/mobirise/css/mbr-additional.css"
+      href="<?php echo url_base(); ?>assets/mobirise/css/mbr-additional.css"
     />
     <link
       rel="stylesheet"
-      href="assets/mobirise/css/mbr-additional.css"
+      href="<?php echo url_base(); ?>assets/mobirise/css/mbr-additional.css"
       type="text/css"
     />
 
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="assets/ytplayer/index.js"></script>
-    <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-    <script src="assets/theme/js/script.js"></script>
-    <script src="assets/formoid/formoid.min.js"></script>
+    <script src="<?php echo url_base(); ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo url_base(); ?>assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="<?php echo url_base(); ?>assets/ytplayer/index.js"></script>
+    <script src="<?php echo url_base(); ?>assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="<?php echo url_base(); ?>assets/theme/js/script.js"></script>
+    <script src="<?php echo url_base(); ?>assets/formoid/formoid.min.js"></script>
   </head>
 
   <body>
@@ -82,7 +116,7 @@
       data-bs-version="5.1"
       class="menu cid-s48OLK6784"
       once="menu"
-      id="menu1-u"
+      id="menu1-q"
     >
       <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
@@ -90,7 +124,7 @@
             <span class="navbar-logo">
               <a href="index.html#top">
                 <img
-                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  src="<?php echo url_base(); ?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
                   style="height: 3.8rem"
                 />
@@ -125,129 +159,35 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
               <li class="nav-item">
-                <a class="nav-link link text-black text-primary display-4" 
-                  href="./">Home</a>
+                <a class="nav-link link text-black text-primary display-4"
+                      href="./">Home</a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link link text-black text-primary display-4"
-                  href="reservas.html"
-                  >Reserva</a>
+                <a class="nav-link link text-black text-primary display-4"
+                      href="../reservas.php">Reservas</a>
               </li>
             </ul>
-
+  
             <div class="navbar-buttons mbr-section-btn">
-              <a
-                class="btn btn-primary-outline display-4"
-                href="cadastro.html#form7-z"
-                >Cadastrar</a
-              >
-              <a class="btn btn-primary display-4" href="login.html#menu1-s"
-                >Login</a
-              >
+              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.html">Cadastrar dentista</a>
+          
+              <a class="btn btn-primary display-4" href="../consultas.html">Consultas</a>
             </div>
           </div>
         </div>
       </nav>
     </section>
 
-    <section data-bs-version="5.1" class="form7 cid-tgMZgL9nIc" id="form7-z">
-      <div class="container-fluid">
-        <div class="row justify-content-center mt-4">
-          <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-            <form
-              action="https://mobirise.eu/"
-              method="POST"
-              class="mbr-form form-with-styler mx-auto"
-              data-form-title="Form Name"
-            >
-              <input
-                type="hidden"
-                name="email"
-                data-form-email="true"
-                value="IyyV4jO111AK69BfmDeUoHQuo0JgBJj8gBZbRLsRf9dfdxSVukZWoiXHVL+kJkcPB2OC79NKfJRLve+ScSj0iwKXYTD/jQxzfGStrAcKJmd2rHAGVhtrVl04dhBQoQqE"
-              />
-              <p class="mbr-text mbr-fonts-style align-center mb-4 display-2">
-                Cadastro
-              </p>
-              <div class="row">
-                <div
-                  hidden="hidden"
-                  data-form-alert=""
-                  class="alert alert-success col-12"
-                >
-                  Thanks for filling out the form!
-                </div>
-                <div
-                  hidden="hidden"
-                  data-form-alert-danger=""
-                  class="alert alert-danger col-12"
-                >
-                  Oops...! some problem!
-                </div>
-              </div>
-              <div class="dragArea row">
-                <div
-                  class="col-lg-12 col-md-12 col-sm-12 form-group mb-3"
-                  data-for="name"
-                >
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Nome"
-                    data-form-field="name"
-                    class="form-control"
-                    value=""
-                    id="name-form7-z"
-                  />
-                </div>
-                <div
-                  class="col-lg-12 col-md-12 col-sm-12 form-group mb-3"
-                  data-for="email"
-                >
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    data-form-field="email"
-                    class="form-control"
-                    value=""
-                    id="email-form7-z"
-                  />
-                </div>
-                <div
-                  data-for="phone"
-                  class="col-lg-12 col-md-12 col-sm-12 form-group mb-3"
-                >
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Telefone"
-                    data-form-field="phone"
-                    class="form-control"
-                    value=""
-                    id="phone-form7-z"
-                  />
-                </div>
-                <div class="col-auto mbr-section-btn align-center">
-                  <button
-                    type="submit"
-                    class="btn btn-primary-outline display-4"
-                  >
-                    Cadastrar-se
-                  </button>
-                </div>
-                <div class="col-auto mbr-section-btn align-center">
-                  <button
-                    type="submit"
-                    class="btn btn-primary display-4"
-                  >
-                    Login
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+    <section data-bs-version="5.1" class="form6 cid-tgN756Npvs" id="form6-13" style="height:100vh">
+      <div class="container">
+        <div class="mbr-section-head">
+          <h3
+            class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"
+          >
+            <strong><?php echo $aviso; ?></strong>
+          </h3>
+        </div>
+        
         </div>
       </div>
     </section>
@@ -256,7 +196,7 @@
       data-bs-version="5.1"
       class="footer3 cid-s48P1Icc8J"
       once="footers"
-      id="footer3-v"
+      id="footer3-r"
     >
       <div class="container">
         <div class="media-container-row align-center mbr-white">
@@ -303,15 +243,14 @@
       </div>
     </section>
     
-    
 
     <!-- scroll top button -->
-    <a href="#menu1-h" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">
 
 
-    <script src="assets/js/script.js"></script>
+    <script src="<?php echo url_base(); ?>assets/js/script.js"></script>
   </body>
 </html>

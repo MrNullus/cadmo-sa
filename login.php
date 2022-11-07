@@ -1,8 +1,3 @@
-<?php  
-session_start();
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -87,18 +82,6 @@ session_start();
                         <a class="nav-link link text-black text-primary display-4"
                             href="./">Home</a>
                       </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link link text-black text-primary display-4"
-                          href="reservas.html"
-                          >Reserva</a>
-                      </li>
-                    </ul>
-
-                    <div class="navbar-buttons mbr-section-btn">
-                        <a class="btn btn-primary-outline display-4" href="cadastro.html#form7-z">Cadastrar</a>
-                        <a class="btn btn-primary display-4" href="login.html#menu1-s">Login</a>
-                    </div>
                 </div>
             </div>
         </nav>

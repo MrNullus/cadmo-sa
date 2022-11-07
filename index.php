@@ -91,6 +91,30 @@ session_start();
                                 href="./">Home</a>
                         </li>
 
+                        <?php if (empty($_SESSION['adm_logado'])  && !isset($_SESSION['adm_logado'])): ?>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="#section-sobrenos">Sobre nós</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="#section-servicos">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="#section-consultas">Consultas</a>
+                        </li>
+                        <li class="nav-item">   
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="#section-contatos">Entre em contato conosco</a>    
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="login.php">Login</a>
+                        </li>
+                        <?php endif; ?>
+
                         <?php if (!empty($_SESSION['adm_logado']) && isset($_SESSION['adm_logado'])): ?>
                         <li class="nav-item">
                             <a class="nav-link link text-black text-primary display-4"
@@ -135,7 +159,7 @@ session_start();
         </div>
     </section>
 
-    <section class="image1 cid-tgMFmDB5Z9 mbr-fullscreen" id="image1-o" data-bs-version="5.1">
+    <section class="image1 cid-tgMFmDB5Z9 mbr-fullscreen" id="image1-o section-sobrenos" data-bs-version="5.1">
         <div>
             <div class="row align-items-center">
                 <div class="col-12 col-lg-6">
@@ -165,7 +189,7 @@ session_start();
         </div>
     </section>
 
-    <section class="content1 cid-s48vaXqeL6" id="content1-b" data-bs-version="5.1">
+    <section class="content1 cid-s48vaXqeL6" id="content1-b section-servicos" data-bs-version="5.1">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="title col-12 col-md-9">
@@ -320,7 +344,7 @@ session_start();
     <section class="contacts2 cid-tgMuo1bNTo" id="contacts2-m" data-bs-version="5.1">
         <!---->
 
-        <div class="container">
+        <div class="container" id="section-contatos">
             <div class="mbr-section-head">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
                     <strong>Contatos</strong>

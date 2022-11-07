@@ -267,7 +267,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
     
 
     <!-- scroll top button -->
-    <a href="#menu1-h" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="consulta-marcada.php#menu1-h" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">

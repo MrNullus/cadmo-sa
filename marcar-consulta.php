@@ -136,9 +136,9 @@
             </ul>
 
             <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.html">Cadastrar dentista</a>
+                <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.php">Cadastrar dentista</a>
             
-                <a class="btn btn-primary display-4" href="marcar-consulta.html">Marcar Consulta</a>
+                <a class="btn btn-primary display-4" href="marcar-consulta.php">Marcar Consulta</a>
             </div>
         </div>
         </div>

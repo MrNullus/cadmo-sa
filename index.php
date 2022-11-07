@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -86,17 +90,22 @@
                             <a class="nav-link link text-black text-primary display-4"
                                 href="./">Home</a>
                         </li>
+
+                        <?php if (!empty($_SESSION['adm_logado']) && isset($_SESSION['adm_logado'])): ?>
                         <li class="nav-item">
                             <a class="nav-link link text-black text-primary display-4"
-                                href="reservas.html">Reservas</a>
+                                href="reservas.php">Reservas</a>
                         </li>
+                        <?php endif; ?>
                     </ul>
 
+                    <?php if (!empty($_SESSION['adm_logado']) && isset($_SESSION['adm_logado'])): ?>
                     <div class="navbar-buttons mbr-section-btn">
-						<a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.html">Cadastrar dentista</a>
+						<a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.php">Cadastrar dentista</a>
 					
-                        <a class="btn btn-primary display-4" href="marcar-consulta.html">Marcar Consulta</a>
+                        <a class="btn btn-primary display-4" href="marcar-consulta.php">Marcar Consulta</a>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
@@ -301,7 +310,7 @@
                         saúde, já marque uma <strong>reserva hoje mesmo</strong>!
                     </h4>
                     <div class="mbr-section-btn align-center">
-                        <a class="btn btn-danger-outline display-4" href="tel:+5545678910">Reservar consulta</a>
+                        <a class="btn btn-danger-outline display-4" href="https://linkwhats.app/fd1edc">Desejo reservar</a>
                     </div>
                 </div>
             </div>
@@ -417,7 +426,7 @@
     </section>
 
     <!-- scroll top button -->
-    <a href="#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="index.php#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
         <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">

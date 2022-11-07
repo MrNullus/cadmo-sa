@@ -1,60 +1,3 @@
-<?php 
-
-require '../config.php';
-
-$aviso = "";
-
-$dentista = new Dentista();
-$dentista->conecta($pdo);
-
-$paciente = new Paciente();
-$paciente->conecta($pdo);
-
-$consulta = new Consulta();
-$consulta->conecta($pdo);
-
-
-if (
-  empty($_POST['nome-dentista']) && !isset($_POST['nome-dentista']) &&
-  empty($_POST['nome-cliente']) && !isset($_POST['nome-cliente'])
-) 
-{
-  $aviso = "Erro ao reservar, cofira os dados e tente novamente...";
-  return;
-}
-
-
-if ($dentista->getCrm($_POST['nome-dentista']) != -1) 
-{
-
-  $crm = $dentista->getCrm($_POST['nome-dentista']);
-  $nome_dentista = $_POST['nome-dentista'];
-  
-  $cod_paciente = $paciente->getCodPaciente($_POST['nome-cliente']);
-  $nome_cliente = $_POST['nome-cliente'];
-  
-  $data_consulta = $_POST['data-consulta'];
-  $hora_consulta = $_POST['hora-consulta'];
-  $valor = $_POST['valor-consulta'];
-
-
-  $consulta->cadastrar_consulta(
-    array(
-      $crm, $cod_paciente, $data_consulta, 
-      $hora_consulta, $valor
-    )
-  );
-
-  $aviso = "Consulta cadastrada com sucesso!";
-  
-} else  
-{
-
-  $aviso = "Erro ao reservar, cofira os dados e tente novamente...";
-  
-}
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -65,19 +8,19 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image:src" content="" />
     <meta property="og:image" content="" />
-    <meta name="twitter:title" content="Reservas" />
+    <meta name="twitter:title" content="Cadastro" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1"
     />
     <link
       rel="shortcut icon"
-      href="<?php echo url_base(); ?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+      href="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
       type="image/x-icon"
     />
     <meta name="description" content="" />
 
-    <title>Cadmo S.A || Reservas</title>
+    <title>Cadmo S.A || Cadastro de Dentista</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -85,7 +28,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
     <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-grid.min.css" />
     <link
       rel="stylesheet"
-      href="assets/bootstrap/css/bootstrap-reboot.min.css"
+      href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-reboot.min.css"
     />
     <link rel="stylesheet" href="<?php echo url_base(); ?>assets/animatecss/animate.css" />
     <link rel="stylesheet" href="<?php echo url_base(); ?>assets/dropdown/css/style.css" />
@@ -139,7 +82,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
       data-bs-version="5.1"
       class="menu cid-s48OLK6784"
       once="menu"
-      id="menu1-q"
+      id="menu1-u"
     >
       <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
@@ -147,7 +90,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
             <span class="navbar-logo">
               <a href="index.html#top">
                 <img
-                  src="<?php echo url_base(); ?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
                   style="height: 3.8rem"
                 />
@@ -179,37 +122,101 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
               <span></span>
             </div>
           </button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-              <li class="nav-item">
-                <a class="nav-link link text-black text-primary display-4"
-                      href="./">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link link text-black text-primary display-4"
-                      href="../reservas.php">Reservas</a>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-black text-primary display-4"
+                        href="./">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-black text-primary display-4"
+                        href="reservas.html">Reservas</a>
+                </li>
             </ul>
 
             <div class="navbar-buttons mbr-section-btn">
-              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.html">Cadastrar dentista</a>
-          
-              <a class="btn btn-primary display-4" href="../consultas.html">Consultas</a>
+                <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.html">Cadastrar dentista</a>
+            
+                <a class="btn btn-primary display-4" href="marcar-consulta.html">Marcar Consulta</a>
             </div>
+          </div>
         </div>
       </nav>
     </section>
 
-    <section data-bs-version="5.1" class="form6 cid-tgN756Npvs" id="form6-13" style="height:100vh">
-      <div class="container">
-        <div class="mbr-section-head">
-          <h3
-            class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"
-          >
-            <strong><?php echo $aviso; ?></strong>
-          </h3>
-        </div>
-        
+    <section data-bs-version="5.1" class="form7 cid-tgMZgL9nIc" id="form7-z">
+      <div class="container-fluid">
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+            <form
+              action="./actions/cadastrar-dentista.php"
+              method="POST"
+              class="mbr-form form-with-styler mx-auto"
+              data-form-title="Form Name"
+            >
+              <input
+                type="hidden"
+                name="email"
+                data-form-email="true"
+                value="IyyV4jO111AK69BfmDeUoHQuo0JgBJj8gBZbRLsRf9dfdxSVukZWoiXHVL+kJkcPB2OC79NKfJRLve+ScSj0iwKXYTD/jQxzfGStrAcKJmd2rHAGVhtrVl04dhBQoQqE"
+              />
+              <p class="mbr-text mbr-fonts-style align-center mb-4 display-2">
+                Cadastrar Dentista
+              </p>
+              <div class="dragArea row">
+                <div
+                  class="col-lg-12 col-md-12 col-sm-12 form-group mb-3"
+                  data-for="name"
+                >
+                  <input
+                    type="text"
+                    name="nome"
+                    placeholder="Nome"
+                    data-form-field="name"
+                    class="form-control"
+                    value=""
+                    id="name-form7-z"
+                  />
+                </div>
+                <div
+                  class="col-lg-12 col-md-12 col-sm-12 form-group mb-3"
+                  data-for="email"
+                >
+                  <input
+                    type="text"
+                    name="crm"
+                    placeholder="CRM"
+                    data-form-field="crm"
+                    class="form-control"
+                    value=""
+                    id="crm-form7-z"
+                  />
+                </div>
+                <div
+                  data-for="phone"
+                  class="col-lg-12 col-md-12 col-sm-12 form-group mb-3"
+                >
+                  <input
+                    type="text"
+                    name="espec"
+                    placeholder="Especialização"
+                    data-form-field="espec"
+                    class="form-control"
+                    value=""
+                    id="espec-form7-z"
+                  />
+                </div>
+                <div class="col-auto mbr-section-btn align-center">
+                  <button
+                    type="submit"
+                    class="btn btn-primary-outline display-4"
+                  >
+                    Cadastrar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -218,7 +225,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
       data-bs-version="5.1"
       class="footer3 cid-s48P1Icc8J"
       once="footers"
-      id="footer3-r"
+      id="footer3-v"
     >
       <div class="container">
         <div class="media-container-row align-center mbr-white">
@@ -265,14 +272,15 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
       </div>
     </section>
     
+    
 
     <!-- scroll top button -->
-    <a href="consulta-marcada.php#menu1-h" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">
 
 
-    <script src="<?php echo url_base(); ?>assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>

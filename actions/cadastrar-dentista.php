@@ -13,7 +13,7 @@ if (
   empty($_POST['espec']) && !isset($_POST['espec'])
 ) 
 {
-  $aviso = "Erro! Volte a pagina de cadastro e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.html'>Cadastro</a>";
+  $aviso = "Erro! Volte a pagina de cadastro e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.php'>Cadastrar Dentista</a>";
   return;
 }
 
@@ -245,7 +245,7 @@ if ($dentista->crmExistente($_POST['crm']))
     
 
     <!-- scroll top button -->
-    <a href="#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="cadastrar-dentista.php#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">

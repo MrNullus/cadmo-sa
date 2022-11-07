@@ -10,12 +10,14 @@ $consulta->conecta($pdo);
 
 $consultas = $consulta->get_consultas();
 
-if (count($consultas) < 0) {
+if (count($consultas) < 0) 
+{
   $divConsulta = "Não houve consultas cadastradas!";
   return;
 }
 
-foreach($consultas as $consulta) {
+foreach($consultas as $consulta) 
+{
   $medico = $consulta['nomeMedico'];
   $paciente = $consulta['nomePaciente'];
   $dia = $consulta['dia'];

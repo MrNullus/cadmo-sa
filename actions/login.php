@@ -1,59 +1,42 @@
-<?php 
+<?php  
+require 'config.php';
 
-require '../config.php';
-
-$aviso = "";
-
-$dentista = new Dentista();
-$dentista->conecta($pdo);
-
-$paciente = new Paciente();
-$paciente->conecta($pdo);
-
-$consulta = new Consulta();
-$consulta->conecta($pdo);
-
+$adm = new Administrador();
+$adm->conecta($pdo);
 
 if (
-  empty($_POST['nome-dentista']) && !isset($_POST['nome-dentista']) &&
-  empty($_POST['nome-cliente']) && !isset($_POST['nome-cliente'])
+	empty($_POST['email']) && !isset($_POST['email']) &&
+  empty($_POST['senha']) && !isset($_POST['senha'])
 ) 
 {
-  $aviso = "Erro ao reservar, cofira os dados e tente novamente...";
+	$aviso = "Erro! Volte a pagina de Login e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='../login.php'>Login</a>";
   return;
 }
 
 
-if ($dentista->getCrm($_POST['nome-dentista']) != -1) 
+if ($adm->esseAdmExiste($_POST['senha'])  
 {
 
-  $crm = $dentista->getCrm($_POST['nome-dentista']);
-  $nome_dentista = $_POST['nome-dentista'];
-  
-  $cod_paciente = $paciente->getCodPaciente($_POST['nome-cliente']);
-  $nome_cliente = $_POST['nome-cliente'];
-  
-  $data_consulta = $_POST['data-consulta'];
-  $hora_consulta = $_POST['hora-consulta'];
-  $valor = $_POST['valor-consulta'];
+	header("Location: index.php");
+	exit;
 
-
-  $consulta->cadastrar_consulta(
-    array(
-      $crm, $cod_paciente, $data_consulta, 
-      $hora_consulta, $valor
-    )
-  );
-
-  $aviso = "Consulta cadastrada com sucesso!";
-  
-} else  
+} else 
 {
 
-  $aviso = "Erro ao reservar, cofira os dados e tente novamente...";
-  
+	$aviso = "
+	Administrador já cadastrado! 
+	<br><br> 
+	<a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-adm.php'>
+		Cadastrar outro
+	</a> ou 
+	<br><br> 
+	<a style='text-decoration: underline; font-size: 2rem;' href='../login.php'>
+		Entrar
+	</a>"; 
+
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -179,23 +162,53 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
               <span></span>
             </div>
           </button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
               <li class="nav-item">
                 <a class="nav-link link text-black text-primary display-4"
-                      href="./">Home</a>
+                  href="./">Home</a>
+              </li>
+
+              <?php if (empty($_SESSION['adm_logado'])  && !isset($_SESSION['adm_logado'])): ?>
+              <li class="nav-item">
+                <a class="nav-link link text-black text-primary display-4"
+                    href="#section-sobrenos">Sobre nós</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link link text-black text-primary display-4"
-                      href="../reservas.php">Reservas</a>
+                    href="#section-servicos">Serviços</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black text-primary display-4"
+                    href="#section-consultas">Consultas</a>
+              </li>
+              <li class="nav-item">   
+                <a class="nav-link link text-black text-primary display-4"
+                    href="#section-contatos">Entre em contato conosco</a>    
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link link text-black text-primary display-4"
+                  href="login.php">Login</a>
+              </li>
+              <?php endif; ?>
+
+              <?php if (!empty($_SESSION['adm_logado']) && isset($_SESSION['adm_logado'])): ?>
+              <li class="nav-item">
+                <a class="nav-link link text-black text-primary display-4"
+                  href="reservas.php">Reservas</a>
+              </li>
+              <?php endif; ?>
             </ul>
 
-            <div class="navbar-buttons mbr-section-btn">
-              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.html">Cadastrar dentista</a>
-          
-              <a class="btn btn-primary display-4" href="../consultas.html">Consultas</a>
+           	<?php if (!empty($_SESSION['adm_logado']) && isset($_SESSION['adm_logado'])): ?>
+           	<div class="navbar-buttons mbr-section-btn">
+							<a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.php">Cadastrar dentista</a>
+	
+              <a class="btn btn-primary display-4" href="marcar-consulta.php">Marcar Consulta</a>
             </div>
+            <?php endif; ?>
+          </div>
         </div>
       </nav>
     </section>
@@ -267,7 +280,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
     
 
     <!-- scroll top button -->
-    <a href="consulta-marcada.php#menu1-h" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="cadastrar-dentista.php#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">

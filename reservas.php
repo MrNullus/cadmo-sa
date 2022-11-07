@@ -206,7 +206,7 @@
     
 
     <!-- scroll top button -->
-    <a href="#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
+    <a href="reservas.php#menu1-q" class="btn scroll-top" id="scroll-top" style="float:right;">
       <i class="fas fa-angle-up"></i>
     </a>
     <input name="animation" type="hidden">

@@ -1,36 +1,42 @@
-<?php
-require_once('../config.php');
+<?php  
+require 'config.php';
 
-$aviso = "";
-
-$dentista = new Dentista();
-$dentista->conecta($pdo);
-
+$adm = new Administrador();
+$adm->conecta($pdo);
 
 if (
-  empty($_POST['crm']) && !isset($_POST['crm']) &&
-  empty($_POST['nome']) && !isset($_POST['nome']) &&
-  empty($_POST['espec']) && !isset($_POST['espec'])
+	empty($_POST['email']) && !isset($_POST['email']) &&
+  empty($_POST['senha']) && !isset($_POST['senha'])
 ) 
 {
-  $aviso = "Erro! Volte a pagina de cadastro e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.php'>Cadastrar Dentista</a>";
+	$aviso = "Erro! Volte a pagina de Login e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='../login.php'>Login</a>";
   return;
 }
 
-if ($dentista->crmExistente($_POST['crm'])) 
+
+if ($adm->esseAdmExiste($_POST['senha']))  
 {
-	$aviso = "Dentista já cadastrado! <br><br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.html'>Cadastrar outro</a>"; 
+
+	header("Location: index.php");
+	exit;
+
 } else 
 {
-	$crm = intval($_POST['crm']);
-	$nome = $_POST['nome'];
-	$espec = $_POST['espec'];
-	
-	$dentista->cadastrar(array($crm, $nome, $espec));
-	
-	$aviso = "Dentista cadastrado com sucesso! <br><br> <a style='text-decoration: underline; font-size: 2rem;' href='../index.html'>Home</a>";
+
+	$aviso = "
+	Administrador já cadastrado! 
+	<br><br> 
+	<a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-adm.php'>
+		Cadastrar outro
+	</a> ou 
+	<br><br> 
+	<a style='text-decoration: underline; font-size: 2rem;' href='../login.php'>
+		Entrar
+	</a>"; 
+
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -160,19 +166,48 @@ if ($dentista->crmExistente($_POST['crm']))
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
               <li class="nav-item">
                 <a class="nav-link link text-black text-primary display-4"
-                      href="./">Home</a>
+                  href="./">Home</a>
+              </li>
+
+              <?php if (empty($_SESSION['adm_logado'])  && !isset($_SESSION['adm_logado'])): ?>
+              <li class="nav-item">
+                <a class="nav-link link text-black text-primary display-4"
+                    href="#section-sobrenos">Sobre nós</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link link text-black text-primary display-4"
-                      href="../reservas.php">Reservas</a>
+                    href="#section-servicos">Serviços</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link link text-black text-primary display-4"
+                    href="#section-consultas">Consultas</a>
+              </li>
+              <li class="nav-item">   
+                <a class="nav-link link text-black text-primary display-4"
+                    href="#section-contatos">Entre em contato conosco</a>    
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link link text-black text-primary display-4"
+                  href="login.php">Login</a>
+              </li>
+              <?php endif; ?>
+
+              <?php if (!empty($_SESSION['adm_logado']) && isset($_SESSION['adm_logado'])): ?>
+              <li class="nav-item">
+                <a class="nav-link link text-black text-primary display-4"
+                  href="reservas.php">Reservas</a>
+              </li>
+              <?php endif; ?>
             </ul>
-  
-            <div class="navbar-buttons mbr-section-btn">
-              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.html">Cadastrar dentista</a>
-          
-              <a class="btn btn-primary display-4" href="../consultas.html">Consultas</a>
+
+           	<?php if (!empty($_SESSION['adm_logado']) && isset($_SESSION['adm_logado'])): ?>
+           	<div class="navbar-buttons mbr-section-btn">
+							<a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.php">Cadastrar dentista</a>
+	
+              <a class="btn btn-primary display-4" href="marcar-consulta.php">Marcar Consulta</a>
             </div>
+            <?php endif; ?>
           </div>
         </div>
       </nav>

@@ -91,19 +91,11 @@
         <div class="container-fluid">
             <div class="row justify-content-center mt-4">
                 <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                    <form action="" method="POST" class="mbr-form form-with-styler mx-auto"
+                    <form action="login.php" method="POST" class="mbr-form form-with-styler mx-auto"
                         data-form-title="Form Login">
                         <p class="mbr-text mbr-fonts-style align-center mb-4 display-2">
                             Login
                         </p>
-                        <div class="row">
-                            <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">
-                                Thanks for filling out the form!
-                            </div>
-                            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                                Oops...! some problem!
-                            </div>
-                        </div>
                         <div class="dragArea row">
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="email">
                                 <input type="email" name="email" placeholder="Email" data-form-field="email"
@@ -121,8 +113,8 @@
                             </div>
 
                             <div class="col-auto mbr-section-btn align-center">
-                              <button
-                                type="submit"
+                              <a
+                                href="cadastrar-adm.php"
                                 class="btn btn-primary-outline display-4"
                               >
                                 Cadastrar-se

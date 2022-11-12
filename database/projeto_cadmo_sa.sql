@@ -53,3 +53,7 @@ CREATE TABLE `consulta` (
     FOREIGN KEY (cod_paciente)
         REFERENCES paciente (cod_paciente)
 );    
+
+
+-- Inserir o ADM Raiz
+INSERT INTO `administrador` (`cod_adm`, `nome`, `email`, `senha`) VALUES (NULL, 'ADM Raiz', 'adm_cadmo_sa@gmail.com', '12345');

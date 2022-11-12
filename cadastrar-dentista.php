@@ -1,3 +1,13 @@
+<?php
+session_start();
+require 'config.php';
+  
+if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
+  header("Location: ". url_base());
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>

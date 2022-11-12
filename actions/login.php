@@ -1,5 +1,6 @@
 <?php  
-require 'config.php';
+session_start();
+require '../config.php';
 
 $adm = new Administrador();
 $adm->conecta($pdo);
@@ -14,10 +15,14 @@ if (
 }
 
 
-if ($adm->esseAdmExiste($_POST['senha'])  
+if ($adm->esseAdmExiste($_POST['senha']))
 {
 
-	header("Location: index.php");
+  $senha = $_POST['senha'];
+  $adm_id = $adm->getCod($senha);
+  $_SESSION['adm_logado'] = $adm_id;
+
+	header("Location: ". url_base());
 	exit;
 
 } else 

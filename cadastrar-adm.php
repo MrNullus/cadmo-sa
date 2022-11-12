@@ -111,10 +111,21 @@ if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                      <li class="nav-item">
-                        <a class="nav-link link text-black text-primary display-4"
-                            href="./">Home</a>
-                      </li>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="./">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black text-primary display-4"
+                                href="reservas.php">Reservas</a>
+                        </li>
+                    </ul>
+
+                    <div class="navbar-buttons mbr-section-btn">
+                        <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.php">Cadastrar dentista</a>
+                    
+                        <a class="btn btn-primary display-4" href="marcar-consulta.php">Marcar Consulta</a>
+                    </div>
                 </div>
             </div>
         </nav>

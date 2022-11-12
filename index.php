@@ -106,7 +106,7 @@ session_start();
                         </li>
                         <li class="nav-item">   
                             <a class="nav-link link text-black text-primary display-4"
-                                href="#section-contatos">Entre em contato conosco</a>    
+                                href="#section-contatos">Contate-nos</a>    
                         </li>
 
                         <li class="nav-item">
@@ -159,7 +159,7 @@ session_start();
         </div>
     </section>
 
-    <section class="image1 cid-tgMFmDB5Z9 mbr-fullscreen" id="image1-o section-sobrenos" data-bs-version="5.1">
+    <section class="image1 cid-tgMFmDB5Z9 mbr-fullscreen" id="section-sobrenos" data-bs-version="5.1">
         <div>
             <div class="row align-items-center">
                 <div class="col-12 col-lg-6">

@@ -13,13 +13,13 @@ if (
   empty($_POST['espec']) && !isset($_POST['espec'])
 ) 
 {
-  $aviso = "Erro! Volte a pagina de cadastro e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.php'>Cadastrar Dentista</a>";
+  $aviso = "Erro! Volte a pagina de cadastro e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='". url_base() ."cadastrar-dentista.php'>Cadastrar Dentista</a>";
   return;
 }
 
 if ($dentista->crmExistente($_POST['crm'])) 
 {
-	$aviso = "Dentista já cadastrado! <br><br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.html'>Cadastrar outro</a>"; 
+	$aviso = "Dentista já cadastrado! <br><br> <a style='text-decoration: underline; font-size: 2rem;' href='../cadastrar-dentista.php'>Cadastrar outro</a>"; 
 } else 
 {
 	$crm = intval($_POST['crm']);
@@ -28,7 +28,7 @@ if ($dentista->crmExistente($_POST['crm']))
 	
 	$dentista->cadastrar(array($crm, $nome, $espec));
 	
-	$aviso = "Dentista cadastrado com sucesso! <br><br> <a style='text-decoration: underline; font-size: 2rem;' href='../index.html'>Home</a>";
+	$aviso = "Dentista cadastrado com sucesso! <br><br> <a style='text-decoration: underline; font-size: 2rem;' href='../index.php'>Home</a>";
 }
 ?>
 
@@ -122,21 +122,16 @@ if ($dentista->crmExistente($_POST['crm']))
         <div class="container">
           <div class="navbar-brand">
             <span class="navbar-logo">
-              <a href="index.html#top">
+              <a href="index.php#top">
                 <img
-                  src="<?php echo url_base(); ?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
                   style="height: 3.8rem"
                 />
               </a>
             </span>
-            <span class="navbar-caption-wrap"
-              ><a
-                class="navbar-caption text-primary display-7"
-                href="index.html#header1-f"
-                >Cadmo S.A</a
-              ></span
-            >
+            <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" 
+              href="index.php#header1-f">Cadmo S.A</a></span>
           </div>
           <button
             class="navbar-toggler"
@@ -169,9 +164,9 @@ if ($dentista->crmExistente($_POST['crm']))
             </ul>
   
             <div class="navbar-buttons mbr-section-btn">
-              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.html">Cadastrar dentista</a>
+              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.php">Cadastrar dentista</a>
           
-              <a class="btn btn-primary display-4" href="../consultas.html">Consultas</a>
+              <a class="btn btn-primary display-4" href="../consultas.php">Consultas</a>
             </div>
           </div>
         </div>

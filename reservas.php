@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require('config.php');
   
 if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
   header("Location: ". url_base());
@@ -17,8 +17,7 @@ if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
     <meta name="generator" content="Mobirise v5.6.13, mobirise.com" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image:src" content="" />
-    <meta property="og:imag
-	e" content="" />
+    <meta property="og:image" content="" />
     <meta name="twitter:title" content="Reservas" />
     <meta
       name="viewport"
@@ -98,7 +97,7 @@ if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
         <div class="container">
           <div class="navbar-brand">
             <span class="navbar-logo">
-              <a href="index.html#top">
+              <a href="index.php#top">
                 <img
                   src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
@@ -106,13 +105,8 @@ if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
                 />
               </a>
             </span>
-            <span class="navbar-caption-wrap"
-              ><a
-                class="navbar-caption text-primary display-7"
-                href="index.html#header1-f"
-                >Cadmo S.A</a
-              ></span
-            >
+            <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" 
+              href="index.php#header1-f">Cadmo S.A</a></span>
           </div>
           <button
             class="navbar-toggler"

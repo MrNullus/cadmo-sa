@@ -84,13 +84,16 @@ require 'config.php';
             <div class="container">
                 <div class="navbar-brand">
                     <span class="navbar-logo">
-                        <a href="index.html#top">
-                            <img src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
-                                alt="Cadmo S.A" style="height: 3.8rem" />
-                        </a>
+                      <a href="index.php#top">
+                        <img
+                          src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                          alt="Cadmo S.A"
+                          style="height: 3.8rem"
+                        />
+                      </a>
                     </span>
-                    <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7"
-                            href="index.html#header1-f">Cadmo S.A</a></span>
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" 
+                      href="index.php#header1-f">Cadmo S.A</a></span>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
                     data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"

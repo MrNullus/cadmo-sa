@@ -106,7 +106,11 @@ session_start();
                         </li>
                         <li class="nav-item">   
                             <a class="nav-link link text-black text-primary display-4"
+<<<<<<< HEAD
                                 href="#section-contatos">Contate-nos</a>    
+=======
+                                href="#section-contatos">Contatos</a>    
+>>>>>>> fa22cf9fe1cf135c9fc1c7c62c8e861d6dadbd94
                         </li>
 
                         <li class="nav-item">
@@ -152,14 +156,14 @@ session_start();
                         cabe em seu bolso!<br><br>
                     </p>
                     <div class="mbr-section-btn mt-3">
-                        <a class="btn btn-primary display-4" href="index.html#image3-9">Saber mais &gt;</a>
+                        <a class="btn btn-primary display-4" href="#section-consultas">Saber mais &gt;</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="image1 cid-tgMFmDB5Z9 mbr-fullscreen" id="section-sobrenos" data-bs-version="5.1">
+    <section class="image1 cid-tgMFmDB5Z9 mbr-fullscreen" id="section-sobrenos" data-bs-version="5.1" style="margin-top: 2rem;">
         <div>
             <div class="row align-items-center">
                 <div class="col-12 col-lg-6">
@@ -188,9 +192,9 @@ session_start();
             </div>
         </div>
     </section>
-
-    <section class="content1 cid-s48vaXqeL6" id="content1-b section-servicos" data-bs-version="5.1">
-        <div class="container">
+	
+    <section class="content1 cid-s48vaXqeL6" id="section-servicos" data-bs-version="5.1">
+        <div class="container" style="margin-top: 2rem;">
             <div class="row justify-content-center">
                 <div class="title col-12 col-md-9">
                     <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
@@ -322,15 +326,15 @@ session_start();
         </div>
     </section>
 
-    <section class="content1 cid-s48vnjULo4" id="content1-c" data-bs-version="5.1">
+    <section class="content1 cid-s48vnjULo4" id="section-consultas" data-bs-version="5.1" style="margin-top: 4rem; padding: 8rem 1.6rem;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="title col-12 col-md-9">
                     <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
-                        <strong>Reservas</strong>
+                        <strong>Consultas</strong>
                     </h3>
                     <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-7">
-                        Ficou interessado em nossos serviços? Então não perca tempo e
+                        Ficou interessado em nossos serviços? E	ntão não perca tempo e
                         saúde, já marque uma <strong>reserva hoje mesmo</strong>!
                     </h4>
                     <div class="mbr-section-btn align-center">
@@ -341,10 +345,10 @@ session_start();
         </div>
     </section>
 
-    <section class="contacts2 cid-tgMuo1bNTo" id="contacts2-m" data-bs-version="5.1">
+    <section class="contacts2 cid-tgMuo1bNTo" id="section-contatos" data-bs-version="5.1" style="margin-top: 4rem;">
         <!---->
 
-        <div class="container" id="section-contatos">
+        <div class="container">
             <div class="mbr-section-head">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
                     <strong>Contatos</strong>
@@ -403,7 +407,7 @@ session_start();
                         </div>
                         <div class="text-wrapper">
                             <h6 class="card-title mbr-fonts-style mb-1 display-5">
-                                <strong>Working Hours</strong>
+                                <strong>Hórario de trabalho</strong>
                             </h6>
                             <p class="mbr-text mbr-fonts-style display-7">9:00 - 18:00</p>
                         </div>

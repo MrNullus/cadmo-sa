@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+require 'config.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,41 +25,57 @@ session_start();
     <title>Cadmo S.A || Home</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
-    <link href="assets/web/assets/mobirise-icons2/mobirise2.css" rel="stylesheet">
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="assets/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet">
-    <link href="assets/parallax/jarallax.css" rel="stylesheet">
-    <link href="assets/animatecss/animate.css" rel="stylesheet">
-    <link href="assets/dropdown/css/style.css" rel="stylesheet">
-    <link href="assets/socicon/css/styles.css" rel="stylesheet">
-    <link href="assets/theme/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-grid.min.css" />
     <link
+      rel="stylesheet"
+      href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-reboot.min.css"
+    />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/animatecss/animate.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/dropdown/css/style.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/socicon/css/styles.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/theme/css/style.css" />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-        rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-            rel="stylesheet">
+      />
     </noscript>
     <link
-        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-        rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      rel="preload"
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
     <noscript>
-        <link
-            href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-            rel="stylesheet">
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+      />
     </noscript>
-    <link href="assets/mobirise/css/mbr-additional.css" rel="preload" as="style">
-    <link type="text/css" href="assets/mobirise/css/mbr-additional.css" rel="stylesheet">
+    <link
+      rel="preload"
+      as="style"
+      href="<?php echo url_base(); ?>assets/mobirise/css/mbr-additional.css"
+    />
+    <link
+      rel="stylesheet"
+      href="<?php echo url_base(); ?>assets/mobirise/css/mbr-additional.css"
+      type="text/css"
+    />
 
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/parallax/jarallax.js"></script>
-    <script src="assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="assets/ytplayer/index.js"></script>
-    <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-    <script src="assets/theme/js/script.js"></script>
+    <script src="<?php echo url_base(); ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo url_base(); ?>assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="<?php echo url_base(); ?>assets/ytplayer/index.js"></script>
+    <script src="<?php echo url_base(); ?>assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="<?php echo url_base(); ?>assets/theme/js/script.js"></script>
+    <script src="<?php echo url_base(); ?>assets/formoid/formoid.min.js"></script>
 </head>
 
 <body>
@@ -88,7 +106,7 @@ session_start();
                     <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                         <li class="nav-item">
                             <a class="nav-link link text-black text-primary display-4"
-                                href="./">Home</a>
+                                href="<?php echo url_base(); ?>">Home</a>
                         </li>
 
                         <?php if (empty($_SESSION['adm_logado'])  && !isset($_SESSION['adm_logado'])): ?>
@@ -106,7 +124,7 @@ session_start();
                         </li>
                         <li class="nav-item">   
                             <a class="nav-link link text-black text-primary display-4"
-                                href="#section-contatos">Contate-nos</a>    
+                                href="#section-contatos">Contatos</a>    
                         </li>
 
                         <li class="nav-item">

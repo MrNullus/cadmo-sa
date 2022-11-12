@@ -90,7 +90,7 @@
     <section data-bs-version="5.1" class="form7 cid-tgMXM0XfXK" id="form7-x">
         <div class="container-fluid">
             <div class="row justify-content-center mt-4">
-                <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                <div class="col-lg-9 mx-auto mbr-form" data-form-type="formoid">
                     <form action="login.php" method="POST" class="mbr-form form-with-styler mx-auto"
                         data-form-title="Form Login">
                         <p class="mbr-text mbr-fonts-style align-center mb-4 display-2">
@@ -116,9 +116,10 @@
                               <a
                                 href="cadastrar-adm.php"
                                 class="btn btn-primary-outline display-4"
+								style="border-radius: 3px;"
                               >
                                 Cadastrar-se
-                              </button>
+                              </a>
                             </div>
                         </div>
                     </form>

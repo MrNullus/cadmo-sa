@@ -14,7 +14,7 @@ if (
 }
 
 
-if ($adm->esseAdmExiste($_POST['senha']))  
+if ($adm->esseAdmExiste($_POST['senha'])  
 {
 
 	header("Location: index.php");

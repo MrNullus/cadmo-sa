@@ -106,11 +106,7 @@ session_start();
                         </li>
                         <li class="nav-item">   
                             <a class="nav-link link text-black text-primary display-4"
-<<<<<<< HEAD
                                 href="#section-contatos">Contate-nos</a>    
-=======
-                                href="#section-contatos">Contatos</a>    
->>>>>>> fa22cf9fe1cf135c9fc1c7c62c8e861d6dadbd94
                         </li>
 
                         <li class="nav-item">

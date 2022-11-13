@@ -1,3 +1,13 @@
+<?php
+session_start();
+require('config.php');
+  
+if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
+  header("Location: ". url_base());
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,8 +17,7 @@
     <meta name="generator" content="Mobirise v5.6.13, mobirise.com" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image:src" content="" />
-    <meta property="og:imag
-	e" content="" />
+    <meta property="og:image" content="" />
     <meta name="twitter:title" content="Reservas" />
     <meta
       name="viewport"
@@ -24,17 +33,16 @@
     <title>Cadmo S.A || Reservas</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-grid.min.css" />
     <link
       rel="stylesheet"
-      href="assets/bootstrap/css/bootstrap-reboot.min.css"
+      href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-reboot.min.css"
     />
-    <link rel="stylesheet" href="assets/animatecss/animate.css" />
-    <link rel="stylesheet" href="assets/dropdown/css/style.css" />
-    <link rel="stylesheet" href="assets/socicon/css/styles.css" />
-    <link rel="stylesheet" href="assets/theme/css/style.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/animatecss/animate.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/dropdown/css/style.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/socicon/css/styles.css" />
+    <link rel="stylesheet" href="<?php echo url_base(); ?>assets/theme/css/style.css" />
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
@@ -62,20 +70,20 @@
     <link
       rel="preload"
       as="style"
-      href="assets/mobirise/css/mbr-additional.css"
+      href="<?php echo url_base(); ?>assets/mobirise/css/mbr-additional.css"
     />
     <link
       rel="stylesheet"
-      href="assets/mobirise/css/mbr-additional.css"
+      href="<?php echo url_base(); ?>assets/mobirise/css/mbr-additional.css"
       type="text/css"
     />
 
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="assets/ytplayer/index.js"></script>
-    <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-    <script src="assets/theme/js/script.js"></script>
-    <script src="assets/formoid/formoid.min.js"></script>
+    <script src="<?php echo url_base(); ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo url_base(); ?>assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="<?php echo url_base(); ?>assets/ytplayer/index.js"></script>
+    <script src="<?php echo url_base(); ?>assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="<?php echo url_base(); ?>assets/theme/js/script.js"></script>
+    <script src="<?php echo url_base(); ?>assets/formoid/formoid.min.js"></script>
   </head>
 
   <body>
@@ -89,7 +97,7 @@
         <div class="container">
           <div class="navbar-brand">
             <span class="navbar-logo">
-              <a href="index.html#top">
+              <a href="index.php#top">
                 <img
                   src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
@@ -97,13 +105,8 @@
                 />
               </a>
             </span>
-            <span class="navbar-caption-wrap"
-              ><a
-                class="navbar-caption text-primary display-7"
-                href="index.html#header1-f"
-                >Cadmo S.A</a
-              ></span
-            >
+            <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" 
+              href="index.php#header1-f">Cadmo S.A</a></span>
           </div>
           <button
             class="navbar-toggler"
@@ -131,14 +134,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link link text-black text-primary display-4"
-                        href="reservas.html">Reservas</a>
+                        href="reservas.php">Reservas</a>
                 </li>
             </ul>
 
             <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.html">Cadastrar dentista</a>
+                <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.php">Cadastrar dentista</a>
             
-                <a class="btn btn-primary display-4" href="marcar-consulta.html">Marcar Consulta</a>
+                <a class="btn btn-primary display-4" href="marcar-consulta.php">Marcar Consulta</a>
             </div>
           </div>
         </div>

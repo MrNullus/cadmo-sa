@@ -5,8 +5,7 @@ $adm = new Administrador();
 $adm->conecta($pdo);
 
 if (
-	
-    empty($_POST['nome'])  && !isset($_POST['nome'])  &&
+  empty($_POST['nome'])  && !isset($_POST['nome'])  &&
 	empty($_POST['email']) && !isset($_POST['email']) &&
 	empty($_POST['senha']) && !isset($_POST['senha'])
 ) 
@@ -147,21 +146,16 @@ if (
         <div class="container">
           <div class="navbar-brand">
             <span class="navbar-logo">
-              <a href="index.html#top">
+              <a href="index.php#top">
                 <img
-                  src="<?php echo url_base(); ?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
                   style="height: 3.8rem"
                 />
               </a>
             </span>
-            <span class="navbar-caption-wrap"
-              ><a
-                class="navbar-caption text-primary display-7"
-                href="index.html#header1-f"
-                >Cadmo S.A</a
-              ></span
-            >
+            <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" 
+              href="index.php#header1-f">Cadmo S.A</a></span>
           </div>
           <button
             class="navbar-toggler"

@@ -25,7 +25,6 @@ require 'config.php';
     <title>Cadmo S.A || Home</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
     <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo url_base(); ?>assets/bootstrap/css/bootstrap-grid.min.css" />
     <link
@@ -85,13 +84,16 @@ require 'config.php';
             <div class="container">
                 <div class="navbar-brand">
                     <span class="navbar-logo">
-                        <a href="index.html#top">
-                            <img src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
-                                alt="Cadmo S.A" style="height: 3.8rem">
-                        </a>
-                    </span>
-                    <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7"
-                            href="index.html#header1-f">Cadmo S.A</a></span>
+              <a href="index.php#top">
+                <img
+                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  alt="Cadmo S.A"
+                  style="height: 3.8rem"
+                />
+              </a>
+            </span>
+            <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" 
+              href="index.php#header1-f">Cadmo S.A</a></span>
                 </div>
                 <button class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     data-target="#navbarSupportedContent" data-toggle="collapse" type="button"

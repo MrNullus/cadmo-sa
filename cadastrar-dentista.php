@@ -1,3 +1,13 @@
+<?php
+session_start();
+require 'config.php';
+  
+if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
+  header("Location: ". url_base());
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,6 +44,7 @@
     <link rel="stylesheet" href="<?php echo url_base(); ?>assets/dropdown/css/style.css" />
     <link rel="stylesheet" href="<?php echo url_base(); ?>assets/socicon/css/styles.css" />
     <link rel="stylesheet" href="<?php echo url_base(); ?>assets/theme/css/style.css" />
+
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
@@ -88,7 +99,7 @@
         <div class="container">
           <div class="navbar-brand">
             <span class="navbar-logo">
-              <a href="index.html#top">
+              <a href="index.php#top">
                 <img
                   src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
@@ -96,13 +107,8 @@
                 />
               </a>
             </span>
-            <span class="navbar-caption-wrap"
-              ><a
-                class="navbar-caption text-primary display-7"
-                href="index.html#header1-f"
-                >Cadmo S.A</a
-              ></span
-            >
+            <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" 
+              href="index.php#header1-f">Cadmo S.A</a></span>
           </div>
           <button
             class="navbar-toggler"
@@ -130,14 +136,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link link text-black text-primary display-4"
-                        href="reservas.html">Reservas</a>
+                        href="reservas.php">Reservas</a>
                 </li>
             </ul>
 
             <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.html">Cadastrar dentista</a>
-            
-                <a class="btn btn-primary display-4" href="marcar-consulta.html">Marcar Consulta</a>
+              <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="./cadastrar-dentista.php">Cadastrar dentista</a>
+          
+              <a class="btn btn-primary display-4" href="marcar-consulta.php">Marcar Consulta</a>
             </div>
           </div>
         </div>

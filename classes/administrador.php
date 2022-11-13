@@ -2,6 +2,7 @@
 class Administrador {
 
 	private $pdo;
+	private $cod;
 	private $nome;
 	private $email;
 	private $senha;
@@ -35,7 +36,13 @@ class Administrador {
 	
 	public function cadastrar() 
 	{
-		$stmt = $this->pdo->prepare("INSERT INTO administrador (nome, email, senha) VALUES (:nome, :email, :senha)");
+		$stmt = $this->pdo->prepare("
+			INSERT INTO 
+				administrador 
+					(nome, email, senha) 
+			VALUES 
+				(:nome, :email, :senha)
+		");
 		
 		$stmt->bindValue(':nome', $this->getNome());
 		$stmt->bindValue(':email', $this->getEmail());
@@ -53,7 +60,13 @@ class Administrador {
 
 	public function esseAdmExiste($senha) 
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM administrador WHERE senha = :senha");
+		$stmt = $this->pdo->prepare("
+			SELECT
+			 * 
+			FROM 
+				administrador 
+			WHERE senha = :senha
+		");
 		
 		$stmt->bindValue(':senha', $senha);
 		$stmt->execute();
@@ -64,6 +77,32 @@ class Administrador {
 		}
 		
 		return false;
+	}
+
+	public function setCod($senha) {
+
+		$stmt = $this->pdo->prepare("
+			SELECT
+			 cod_adm
+			FROM 
+				administrador 
+			WHERE senha = :senha
+		");
+
+		$stmt->bindValue(':senha', $senha);
+		$stmt->execute();
+
+		if ($stmt->rowCount() > 0) 
+		 {
+			$stmt = $stmt->fetch(PDO::FETCH_ASSOC);
+			$this->cod = $stmt['cod_adm'];
+		}
+	}
+	public function getCod($senha) 
+	 {
+
+		$this->setCod($senha);
+		return $this->cod;
 	}
 
 }

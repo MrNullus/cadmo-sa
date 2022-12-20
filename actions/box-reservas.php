@@ -6,7 +6,6 @@ $divConsulta = "";
 $consulta = new Consulta();
 $consulta->conecta($pdo);
 
-
 $consultas = $consulta->get_consultas();
 
 if (count($consultas) < 0) 

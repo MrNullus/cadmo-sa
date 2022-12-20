@@ -8,9 +8,9 @@ $dentista->conecta($pdo);
 
 
 if (
-  empty($_POST['crm']) && !isset($_POST['crm']) &&
-  empty($_POST['nome']) && !isset($_POST['nome']) &&
-  empty($_POST['espec']) && !isset($_POST['espec'])
+  empty($_POST['crm'])    || !isset($_POST['crm']) &&
+  empty($_POST['nome']) || !isset($_POST['nome']) &&
+  empty($_POST['espec']) || !isset($_POST['espec'])
 ) 
 {
   $aviso = "Erro! Volte a pagina de cadastro e preencha as infromações corretamente... <br> <a style='text-decoration: underline; font-size: 2rem;' href='". url_base() ."cadastrar-dentista.php'>Cadastrar Dentista</a>";
@@ -124,7 +124,7 @@ if ($dentista->crmExistente($_POST['crm']))
             <span class="navbar-logo">
               <a href="index.php#top">
                 <img
-                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  src="<?php echo url_base() ;?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
                   style="height: 3.8rem"
                 />
@@ -166,7 +166,7 @@ if ($dentista->crmExistente($_POST['crm']))
             <div class="navbar-buttons mbr-section-btn">
               <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.php">Cadastrar dentista</a>
           
-              <a class="btn btn-primary display-4" href="../consultas.php">Consultas</a>
+              <a class="btn btn-primary display-4" href="../marcar-consultas.php">Consultas</a>
             </div>
           </div>
         </div>

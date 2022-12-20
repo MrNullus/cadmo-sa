@@ -174,7 +174,7 @@ if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
                   <input
                     type="text"
                     name="nome-dentista"
-                    id="name-form6-13 nome-dentista"
+                    id="nome-dentista"
                     class="form-control"
                     placeholder="Dentista"
                     data-form-field="nome-dentista"
@@ -187,7 +187,7 @@ if (empty($_SESSION['adm_logado']) && !isset($_SESSION['adm_logado'])) {
                   <input
                     type="text"
                     name="nome-cliente"
-                    id="name-form6-13 nome-cliente"
+                    id="nome-cliente"
                     class="form-control"
                     placeholder="Cliente"
                     data-form-field="name"

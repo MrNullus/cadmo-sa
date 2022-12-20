@@ -7,16 +7,16 @@ $aviso = "";
 $dentista = new Dentista();
 $dentista->conecta($pdo);
 
-$paciente = new Paciente();
-$paciente->conecta($pdo);
+//$paciente = new Paciente();
+//$paciente->conecta($pdo);
 
 $consulta = new Consulta();
 $consulta->conecta($pdo);
 
 
 if (
-  empty($_POST['nome-dentista']) && !isset($_POST['nome-dentista']) &&
-  empty($_POST['nome-cliente']) && !isset($_POST['nome-cliente'])
+  empty($_POST['nome-dentista']) || !isset($_POST['nome-dentista']) &&
+  empty($_POST['nome-cliente'])   || !isset($_POST['nome-cliente'])
 ) 
 {
   $aviso = "Erro ao reservar, cofira os dados e tente novamente...";
@@ -30,7 +30,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
   $crm = $dentista->getCrm($_POST['nome-dentista']);
   $nome_dentista = $_POST['nome-dentista'];
   
-  $cod_paciente = $paciente->getCodPaciente($_POST['nome-cliente']);
+ //$cod_paciente = $paciente->getCodPaciente($_POST['nome-cliente']);
   $nome_cliente = $_POST['nome-cliente'];
   
   $data_consulta = $_POST['data-consulta'];
@@ -40,7 +40,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
 
   $consulta->cadastrar_consulta(
     array(
-      $crm, $cod_paciente, $data_consulta, 
+      $crm, $nome_cliente, $data_consulta, 
       $hora_consulta, $valor
     )
   );
@@ -147,7 +147,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
             <span class="navbar-logo">
               <a href="index.php#top">
                 <img
-                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  src="<?php echo url_base();?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
                   style="height: 3.8rem"
                 />
@@ -189,7 +189,7 @@ if ($dentista->getCrm($_POST['nome-dentista']) != -1)
             <div class="navbar-buttons mbr-section-btn">
               <a class="btn btn-primary btn-danger-outline  display-4" style="color: black!important;" href="../cadastrar-dentista.html">Cadastrar dentista</a>
           
-              <a class="btn btn-primary display-4" href="../consultas.html">Consultas</a>
+              <a class="btn btn-primary display-4" href="../marcar-consulta.php">Consultas</a>
             </div>
         </div>
       </nav>

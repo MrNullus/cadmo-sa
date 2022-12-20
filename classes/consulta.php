@@ -13,10 +13,10 @@ class Consulta {
   {
     $dados_preparados = array();
 
-    $stmt = $this->pdo->prepare("INSERT INTO consulta (crm, cod_paciente, dia, hora, valor) VALUES (:crm, :cod_paciente, :dia, :hora, :valor)");
+    $stmt = $this->pdo->prepare("INSERT INTO consulta (crm, paciente, dia, hora, valor) VALUES (:crm, :paciente, :dia, :hora, :valor)");
 
     $stmt->bindValue(':crm', $dados[0]);
-    $stmt->bindValue(':cod_paciente', $dados[1]);
+    $stmt->bindValue(':paciente', $dados[1]);
     $stmt->bindValue(':dia', $dados[2]);
     $stmt->bindValue(':hora', $dados[3]);
     $stmt->bindValue(':valor', $dados[4]);
@@ -31,19 +31,17 @@ class Consulta {
     $stmt = $this->pdo->prepare("
     SELECT 
       d.nome as nomeMedico,
-      p.nome as nomePaciente,
+      c.paciente as nomePaciente,
       dia,
       hora,
       valor
       
     FROM 
       dentista as d,
-      paciente as p,
       consulta as c
       
     WHERE 
-      d.crm  = c.crm AND
-      p.cod_paciente = c.cod_paciente
+      d.crm  = c.crm
     ");
     
     $stmt->execute();

@@ -148,7 +148,7 @@ if (
             <span class="navbar-logo">
               <a href="index.php#top">
                 <img
-                  src="assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
+                  src="<?php echo url_base() ;?>assets/images/vecteezy-modern-and-professional-dental-logo-design-suitable-for-96x96.png"
                   alt="Cadmo S.A"
                   style="height: 3.8rem"
                 />
